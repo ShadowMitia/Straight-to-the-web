@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Simple Web",
+  "version": "0.1",
+  "description": "Forces all google search to the new 'Web' mode by appending links with udm=14",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "menus",
+    "https://*.google.com/search*"
+  ],
+  "background": {
+    "scripts": ["main.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{a7eef67d-800e-49ec-b795-6a11ee4a2c16}"
+    }
+  },
+  "browser_action": {
+    "default_area": "navbar",
+    "default_icon": {
+      "48": "icons/browser_on.svg",
+      "64": "icons/browser_on.svg",
+      "128": "icons/browser_on.svg",
+      "512": "icons/browser_on.svg"
+    }
+  }
+}
