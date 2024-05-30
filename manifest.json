@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "Straight to the web",
   "homepage_url": "https://github.com/ShadowMitia/Straight-to-the-web",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Forces all Google searches to use the new 'Web' mode by appending links with udm=14",
   "permissions": [
     "webRequest",

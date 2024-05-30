@@ -11,14 +11,19 @@ function process(details) {
     return;
   }
 
+  // Detect if we are in image search, don't do anything.
+  // Otherwise this addon breaks image search...
+  // Seems to work fine other modes.
+  if (details.url.includes('udm=2')) {
+    return;
+  }
+
+  // add &udm=14 if URL already has search string, otherwise ?udm=14
   let udm14 = (details.url.includes('?') ? '&' : '?') + 'udm=14';
 
-  // check it doesn't have udm=14
   if (is_active && !details.url.includes('udm=14')) {
-    // add &udm=14 if URL already has search string, otherwise ?udm=14
     return {redirectUrl: details.url + udm14};
   } else if (!is_active && !details.url.includes('udm=14')) {
-    // Otherwise simply remove it
     return {redirectUrl: details.url.replace(udm14,'')};
   }
 }
