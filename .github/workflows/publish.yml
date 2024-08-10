@@ -5,6 +5,8 @@ on:
       - "v*"
 jobs:
   publish_all:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
