@@ -1,0 +1,31 @@
+name: Publisher
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  publish_all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Generate addon xpi
+        run: make
+      - name: Publish to Mozilla Hub
+        uses: wdzeng/firefox-addon@v1
+        with:
+          addon-guid: "{a7eef67d-800e-49ec-b795-6a11ee4a2c16}"
+          xpi-path: straight-to-web.xpi
+          self-hosted: false
+          jwt-issuer: ${{ secrets.MOZILLA_USER }}
+          jwt-secret: ${{ secrets.MOZILLA_JWT }}
+      - name: Publish release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
