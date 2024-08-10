@@ -11,10 +11,8 @@ function process(details) {
     return;
   }
 
-  // Detect if we are in image search, don't do anything.
-  // Otherwise this addon breaks image search...
-  // Seems to work fine other modes.
-  if (details.url.includes('udm=2')) {
+  // Detect if we are in a tab where adding udm=14 would break that page
+  if (details.url.includes("udm=2") || details.url.includes("udm=3")) {
     return;
   }
 
