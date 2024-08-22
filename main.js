@@ -212,12 +212,12 @@ function process(details) {
   }
 
   // add &udm=14 if URL already has search string, otherwise ?udm=14
-  let udm14 = (details.url.includes('?') ? '&' : '?') + 'udm=14';
+  let udm14 = (details.url.includes("?") ? "&" : "?") + "udm=14";
 
-  if (is_active && !details.url.includes('udm=14')) {
-    return {redirectUrl: details.url + udm14};
-  } else if (!is_active && !details.url.includes('udm=14')) {
-    return {redirectUrl: details.url.replace(udm14,'')};
+  if (is_active && !details.url.includes("udm=14")) {
+    return { redirectUrl: details.url + udm14 };
+  } else if (!is_active && !details.url.includes("udm=14")) {
+    return { redirectUrl: details.url.replace(udm14, "") };
   }
 }
 
@@ -227,20 +227,20 @@ browser.browserAction.onClicked.addListener((tab) => {
   if (is_active) {
     let settingIcon = browser.browserAction.setIcon({
       path: {
-        "48": "icons/browser_on.svg",
-        "64": "icons/browser_on.svg",
-        "128": "icons/browser_on.svg",
-        "512": "icons/browser_on.svg"
+        48: "icons/browser_on.svg",
+        64: "icons/browser_on.svg",
+        128: "icons/browser_on.svg",
+        512: "icons/browser_on.svg",
       },
     });
   } else {
     let settingIcon = browser.browserAction.setIcon({
       path: {
-        "48": "icons/browser_off.svg",
-        "64": "icons/browser_off.svg",
-        "128": "icons/browser_off.svg",
-        "512": "icons/browser_off.svg"
-      }
+        48: "icons/browser_off.svg",
+        64: "icons/browser_off.svg",
+        128: "icons/browser_off.svg",
+        512: "icons/browser_off.svg",
+      },
     });
   }
 });
