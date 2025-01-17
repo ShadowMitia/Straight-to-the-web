@@ -207,7 +207,7 @@ function process(details) {
   }
 
   // Detect if we are in a tab where adding udm=14 would break that page
-  if (details.url.includes("udm=2") || details.url.includes("udm=3")) {
+  if (details.url.includes("udm=2") || details.url.includes("udm=3") || details.url.includes("udm=7")) {
     return;
   }
 
